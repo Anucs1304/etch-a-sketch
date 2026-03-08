@@ -10,10 +10,25 @@ function createGrid(size){
         const div= document.createElement("div");
         div.classList.add("square");
         div.style.width = `${squareSize}px`;
-        div.style.height = `${squareSize}px`;;
+        div.style.height = `${squareSize}px`;
+
+        div.dataset.darkness = 0;
         
         div.addEventListener("mouseover" , () =>{
-            div.style.backgroundColor = "black";
+            let darkness = parseInt(div.dataset.darkness);
+
+            if (darkness < 10) {
+                darkness++;
+                div.dataset.darkness = darkness;
+            }
+
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+
+            const factor = (10 - darkness) / 10;
+
+            div.style.backgroundColor = `rgb(${r * factor}, ${g * factor}, ${b * factor})`;
         });
 
         container.appendChild(div);
