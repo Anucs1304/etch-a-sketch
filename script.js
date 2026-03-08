@@ -38,9 +38,13 @@ function createGrid(size){
 createGrid(16);
 
 resetBtn.addEventListener("click", () => {
-    let size = parseInt(prompt("Enter grid size (1-100):"));
+    let input = prompt("Enter grid size (1-100):");
 
-    if(isNaN || size < 1 || size > 100) {
+    if(input === null) return;
+
+    let sixe = Number(input);
+
+    if(!Number.isInteger(size) || size < 1 || size > 100) {
         alert("Please enter a valid number between 1 and 100.")
         return ;
     }
