@@ -10,7 +10,7 @@ function createGrid(size){
         const div= document.createElement("div");
         div.classList.add("square");
         div.style.width = `${squareSize}px`;
-        div.style.height = `${squareSize}px`;
+        div.style.height = `${squareSize}px`;;
         
         div.addEventListener("mouseover" , () =>{
             div.style.backgroundColor = "black";
@@ -21,3 +21,14 @@ function createGrid(size){
 }
 
 createGrid(16);
+
+resetBtn.addEventListener("click", () => {
+    let size = parseInt(prompt("Enter grid size (1-100):"));
+
+    if(isNaN || size < 1 || size > 100) {
+        alert("Please enter a valid number between 1 and 100.")
+        return ;
+    }
+
+    createGrid(size);
+});
